@@ -151,12 +151,16 @@
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
 
       var board = this.rows();
+      // var start = majorDiagonalColumnIndexAtFirstRow;
 
+      // for (var i = start - n; i < board.length; i++) {
+
+      // }
       for (var i = 0; i < board.length; i++) {
         var count = 0;
-        var indexPos = majorDiagonalColumnIndexAtFirstRow;
-        var row = i;
-        while (row < board.length) {
+        var indexPos = majorDiagonalColumnIndexAtFirstRow; // 2
+        var row = i; //1
+        while (row < board.length && indexPos < board.length) {
           count += board[row][indexPos];
           row++;
           indexPos++;
@@ -171,6 +175,7 @@
 
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
+
       var boardSize = this.get('n');
 
       for (var i = 0; i < boardSize; i++) {
@@ -206,6 +211,7 @@
         }
       }
 
+      return false;
     },
 
     // test if any minor diagonals on this board contain conflicts

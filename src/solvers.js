@@ -26,16 +26,42 @@ window.findNRooksSolution = function(n) {
     row++;
     col++;
   }
-
   // as n grows place another piece diagonally in the next row and column
-    //increment row and column by one
+  //increment row and column by one
   console.log('Single solution for ' + n + ' rooks:', JSON.stringify(solution));
   return solution.rows();
 };
 
 // return the number of nxn chessboards that exist, with n rooks placed such that none of them can attack each other
 window.countNRooksSolutions = function(n) {
-  var solutionCount = undefined; //fixme
+  var board = new Board({n: n });
+  var solutionCount = 0;
+  var row = 0;
+
+  var innerFunc = function (row, n) {
+
+    if (row === n) {
+      solutionCount++;
+      return;
+    }
+
+    for (var j = 0; j < n; j++) {
+      board.togglePiece(row, j);
+
+      if (board.hasAnyRooksConflicts()) {
+        board.togglePiece(row, j);
+      } else {
+        innerFunc(row + 1, n);
+        board.togglePiece(row, j);
+      }
+    }
+  };
+  innerFunc(0, n);
+
+  // start with a rook in top position
+    // recursively call this to check all possible solution with the rook in the top position
+      // if no solution found return out
+      //if solution found add to counter and continue
 
   console.log('Number of solutions for ' + n + ' rooks:', solutionCount);
   return solutionCount;
@@ -51,7 +77,29 @@ window.findNQueensSolution = function(n) {
 
 // return the number of nxn chessboards that exist, with n queens placed such that none of them can attack each other
 window.countNQueensSolutions = function(n) {
-  var solutionCount = undefined; //fixme
+  var board = new Board({n: n });
+  var solutionCount = 0;
+  var row = 0;
+
+  var innerFunc = function (row, n) {
+
+    if (row === n) {
+      solutionCount++;
+      return;
+    }
+
+    for (var j = 0; j < n; j++) {
+      board.togglePiece(row, j);
+
+      if (board.hasAnyQueensConflicts()) {
+        board.togglePiece(row, j);
+      } else {
+        innerFunc(row + 1, n);
+        board.togglePiece(row, j);
+      }
+    }
+  };
+  innerFunc(0, n);
 
   console.log('Number of solutions for ' + n + ' queens:', solutionCount);
   return solutionCount;
