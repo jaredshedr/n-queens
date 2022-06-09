@@ -166,22 +166,6 @@
         }
       }
 
-      // var board = this.rows();
-      // var diagColumn = [];
-      // var count = 0;
-
-      // for (var i = 0; i < board.length; i++) {
-      //   diagColumn.push(board[i][majorDiagonalColumnIndexAtFirstRow]);
-      //   majorDiagonalColumnIndexAtFirstRow++;
-      // }
-
-      // for (var square of diagColumn) {
-      //   if (square === 1) {
-      //     count++;
-      //   }
-      // }
-
-      // return count > 1; // fixme
       return false;
     },
 
@@ -195,21 +179,6 @@
         }
       }
 
-      // var board = this.rows();
-      // var oneCounter = 0;
-      // var count = 0;
-      // for (var i = 1; i <= board.length - 1; i++) {
-      //   oneCounter += board[i][count];
-      //   count++;
-      // }
-      // var secondCount = 0;
-      // for (var i = 2; i <= board.length - 2; i++) {
-      //   oneCounter += board[i][secondCount];
-      //   secondCount++;
-      // }
-
-
-      // return oneCounter > 1;
       return false;
     },
 
@@ -237,22 +206,6 @@
         }
       }
 
-      // var board = this.rows();
-      // var diagColumn = [];
-      // var count = 0;
-
-      // for (var i = 0; i < board.length; i++) {
-      //   diagColumn.push(board[i][minorDiagonalColumnIndexAtFirstRow]);
-      //   minorDiagonalColumnIndexAtFirstRow--;
-      // }
-
-      // for (var square of diagColumn) {
-      //   if (square === 1) {
-      //     count++;
-      //   }
-      // }
-
-      // return count > 1;
     },
 
     // test if any minor diagonals on this board contain conflicts
@@ -266,20 +219,6 @@
         }
       }
 
-      // var board = this.rows();
-      // var oneCounter = 0;
-      // var count = board.length - 1;
-      // for (var i = 1; i <= board.length - 1; i++) {
-      //   oneCounter += board[i][count];
-      //   count--;
-      // }
-      // var secondCount = board.length - 1;
-      // for (var i = 2; i <= board.length - 1; i++) {
-      //   oneCounter += board[i][secondCount];
-      //   secondCount--;
-      // }
-
-      // return oneCounter > 1;
       return false;
     }
 
