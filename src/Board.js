@@ -149,22 +149,40 @@
     //
     // test if a specific major diagonal on this board contains a conflict
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
+
       var board = this.rows();
-      var diagColumn = [];
-      var count = 0;
 
       for (var i = 0; i < board.length; i++) {
-        diagColumn.push(board[i][majorDiagonalColumnIndexAtFirstRow]);
-        majorDiagonalColumnIndexAtFirstRow++;
-      }
-
-      for (var square of diagColumn) {
-        if (square === 1) {
-          count++;
+        var count = 0;
+        var indexPos = majorDiagonalColumnIndexAtFirstRow;
+        var row = i;
+        while (row < board.length) {
+          count += board[row][indexPos];
+          row++;
+          indexPos++;
+        }
+        if (count > 1) {
+          return true;
         }
       }
 
-      return count > 1; // fixme
+      // var board = this.rows();
+      // var diagColumn = [];
+      // var count = 0;
+
+      // for (var i = 0; i < board.length; i++) {
+      //   diagColumn.push(board[i][majorDiagonalColumnIndexAtFirstRow]);
+      //   majorDiagonalColumnIndexAtFirstRow++;
+      // }
+
+      // for (var square of diagColumn) {
+      //   if (square === 1) {
+      //     count++;
+      //   }
+      // }
+
+      // return count > 1; // fixme
+      return false;
     },
 
     // test if any major diagonals on this board contain conflicts
@@ -177,21 +195,22 @@
         }
       }
 
-      var board = this.rows();
-      var oneCounter = 0;
-      var count = 0;
-      for (var i = 1; i <= board.length - 1; i++) {
-        oneCounter += board[i][count];
-        count++;
-      }
-      var secondCount = 0;
-      for (var i = 2; i <= board.length - 2; i++) {
-        oneCounter += board[i][secondCount];
-        secondCount++;
-      }
+      // var board = this.rows();
+      // var oneCounter = 0;
+      // var count = 0;
+      // for (var i = 1; i <= board.length - 1; i++) {
+      //   oneCounter += board[i][count];
+      //   count++;
+      // }
+      // var secondCount = 0;
+      // for (var i = 2; i <= board.length - 2; i++) {
+      //   oneCounter += board[i][secondCount];
+      //   secondCount++;
+      // }
 
 
-      return oneCounter > 1;
+      // return oneCounter > 1;
+      return false;
     },
 
 
@@ -201,22 +220,39 @@
     //
     // test if a specific minor diagonal on this board contains a conflict
     hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow) {
+
       var board = this.rows();
-      var diagColumn = [];
-      var count = 0;
 
       for (var i = 0; i < board.length; i++) {
-        diagColumn.push(board[i][minorDiagonalColumnIndexAtFirstRow]);
-        minorDiagonalColumnIndexAtFirstRow--;
-      }
-
-      for (var square of diagColumn) {
-        if (square === 1) {
-          count++;
+        var count = 0;
+        var indexPos = minorDiagonalColumnIndexAtFirstRow;
+        var row = i;
+        while (indexPos >= 0 && row <= board.length - 1) {
+          count += board[row][indexPos];
+          row++;
+          indexPos--;
+        }
+        if (count > 1) {
+          return true;
         }
       }
 
-      return count > 1;
+      // var board = this.rows();
+      // var diagColumn = [];
+      // var count = 0;
+
+      // for (var i = 0; i < board.length; i++) {
+      //   diagColumn.push(board[i][minorDiagonalColumnIndexAtFirstRow]);
+      //   minorDiagonalColumnIndexAtFirstRow--;
+      // }
+
+      // for (var square of diagColumn) {
+      //   if (square === 1) {
+      //     count++;
+      //   }
+      // }
+
+      // return count > 1;
     },
 
     // test if any minor diagonals on this board contain conflicts
@@ -224,39 +260,27 @@
 
       var boardSize = this.get('n');
 
-      for (var i = boardSize; i > 0; i--) {
+      for (var i = boardSize - 1; i > 0; i--) {
         if (this.hasMinorDiagonalConflictAt(i)) {
           return true;
         }
       }
 
-      var board = this.rows();
-      var oneCounter = 0;
-      var count = board.length - 1;
-      for (var i = 1; i <= board.length - 1; i++) {
-        oneCounter += board[i][count];
-        count--;
-      }
-      var secondCount = board.length - 1;
-      for (var i = 2; i <= board.length - 1; i++) {
-        oneCounter += board[i][secondCount];
-        secondCount--;
-      }
-
-      return oneCounter > 1;
-
-      // var index = this.get('n');
-      // while (index >= 1) {
-      //   var innerArrayPos = index - 1;
-      //   for (let j = this.get('n') - 2; j <= this.get('n') - 1  )
+      // var board = this.rows();
+      // var oneCounter = 0;
+      // var count = board.length - 1;
+      // for (var i = 1; i <= board.length - 1; i++) {
+      //   oneCounter += board[i][count];
+      //   count--;
+      // }
+      // var secondCount = board.length - 1;
+      // for (var i = 2; i <= board.length - 1; i++) {
+      //   oneCounter += board[i][secondCount];
+      //   secondCount--;
       // }
 
-      //var index = this.get('n')
-      // while index is greater than 0
-        //inner variable for inner array length
-        // loop through to get the whole diagnal column
-      //increase index by one
-
+      // return oneCounter > 1;
+      return false;
     }
 
     /*--------------------  End of Helper Functions  ---------------------*/
