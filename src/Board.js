@@ -151,11 +151,7 @@
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
 
       var board = this.rows();
-      // var start = majorDiagonalColumnIndexAtFirstRow;
 
-      // for (var i = start - n; i < board.length; i++) {
-
-      // }
       for (var i = 0; i < board.length; i++) {
         var count = 0;
         var indexPos = majorDiagonalColumnIndexAtFirstRow; // 2
